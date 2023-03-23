@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>0B9</title>
+    <link rel = "icon" href = "https://i.gyazo.com/56046ae0fb1b4a644661932f48b38efb.png" type = "image/x-icon">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #myVideo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(50%);
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+      <video id="myVideo" autoplay loop></video>
+      <script>
+      var videos = [
+          'always saucy.mp4',
+          'out my body.mp4'
+          ];
+          var videoPlayer = document.getElementById('myVideo');
+          var randomIndex = Math.floor(Math.random() * videos.length);
+          videoPlayer.src = videos[randomIndex];
+          videoPlayer.play();
+    </script>
+  </body>
+</html>
