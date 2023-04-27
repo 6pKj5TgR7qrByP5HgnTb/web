@@ -32,6 +32,11 @@
           var randomIndex = Math.floor(Math.random() * videos.length);
           videoPlayer.src = videos[randomIndex];
           videoPlayer.play();
+        
+        videoPlayer.onerror = function() {
+        videoPlayer.style.display = "none";
+        document.body.style.backgroundColor = "black";
+      };
     </script>
   </body>
 </html>
