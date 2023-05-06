@@ -10,19 +10,6 @@
         padding: 0;
       }
       
-      		.float {
-			position: fixed;
-			top: 10px;
-			left: 10px;
-			background-color: #f1f1f1;
-			border: 2px solid #555;
-			padding: 10px;
-			z-index: 1;
-			text-align: left;
-			font-size: 16px;
-			font-family: Arial, sans-serif;
-		}
-
       #myVideo {
         position: fixed;
         top: 0;
@@ -46,25 +33,5 @@
           videoPlayer.src = videos[randomIndex];
           videoPlayer.play();
     </script>
-    <div class="float">
-		<p>Your IP address is:</p>
-		<p><?php echo $_SERVER['REMOTE_ADDR']; ?></p>
-		<p>Your port is:</p>
-		<p><?php echo $_SERVER['REMOTE_PORT']; ?></p>
-		<p>Your provider is:</p>
-		<p><?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']); ?></p>
-		<p>Your country is:</p>
-		<p><?php echo $_SERVER['HTTP_CF_IPCOUNTRY']; ?></p>
-		<p>Your region is:</p>
-		<p><?php echo $_SERVER['HTTP_CF_REGION']; ?></p>
-		<p>Your city is:</p>
-		<p><?php echo $_SERVER['HTTP_CF_CITY']; ?></p>
-		<p>Your operating system is:</p>
-		<p><?php echo $_SERVER['HTTP_USER_AGENT']; ?></p>
-		<p>Your browser is:</p>
-		<p><?php echo get_browser(null, true)['parent']; ?></p>
-		<p>Your user agent is:</p>
-		<p><?php echo $_SERVER['HTTP_USER_AGENT']; ?></p>
-	</div>
   </body>
 </html>
