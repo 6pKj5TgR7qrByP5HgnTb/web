@@ -54,9 +54,20 @@
     <script>
       function playVideo() {
         var video = document.getElementById('myVideo');
-        video.play();
-        video.classList.add('loaded');
+
         document.getElementById('playButton').style.display = 'none';
+
+        video.play();
+
+        video.classList.add('loaded');
+
+        video.addEventListener('ended', function() {
+          video.pause();
+
+          video.classList.remove('loaded');
+
+          document.getElementById('playButton').style.display = 'block';
+        });
       }
 
       document.getElementById('myVideo').addEventListener('canplaythrough', function() {
