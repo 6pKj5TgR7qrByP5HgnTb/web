@@ -51,8 +51,15 @@
 
     <button id="playButton" onclick="playVideo()">𝗖𝗟𝗜𝗖𝗞 𝗢𝗡 𝗠𝗘, 𝗙𝗘𝗟𝗟𝗔 🗣 ️‍🔥</button>
 
+    <audio id="soundEffect">
+      <source src="BANGGG.ogg" type="audio/ogg">
+    </audio>
+
     <script>
       function playVideo() {
+        var soundEffect = document.getElementById('soundEffect');
+        soundEffect.play();
+
         var video = document.getElementById('myVideo');
 
         document.getElementById('playButton').style.display = 'none';
