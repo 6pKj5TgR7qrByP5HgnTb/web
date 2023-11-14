@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title> </title>
-<meta property="og:type" content="0B9">
-<meta property="og:title" content="It's all about 0B9" />
-<meta property="og:description" content="Only 0B9" />
-<meta property="og:url" content="http://0b9.org" />
-<meta property="og:image" content="" />
-    <link rel = "icon" href = "https://i.gyazo.com/56046ae0fb1b4a644661932f48b38efb.png" type = "image/x-icon">
+    <meta property="og:type" content="0B9">
+    <meta property="og:title" content="It's all about 0B9" />
+    <meta property="og:description" content="Only 0B9" />
+    <meta property="og:url" content="http://0b9.org" />
+    <meta property="og:image" content="" />
+    <link rel="icon" href="https://i.gyazo.com/56046ae0fb1b4a644661932f48b38efb.png" type="image/x-icon">
     <style>
       body {
         margin: 0;
@@ -28,15 +28,8 @@
     </style>
   </head>
   <body>
-      <video id="myVideo" autoplay loop></video>
-      <script>
-      var videos = [
-          'dawg.mp4',
-          ];
-          var videoPlayer = document.getElementById('myVideo');
-          var randomIndex = Math.floor(Math.random() * videos.length);
-          videoPlayer.src = videos[randomIndex];
-          videoPlayer.play();
-    </script>
+    <video id="myVideo" autoplay loop>
+      <source src="dawg.mp4" type="video/mp4">
+    </video>
   </body>
 </html>
