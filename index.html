@@ -46,7 +46,8 @@
   </head>
   <body>
     <video id="myVideo">
-      <source src="dawgg.mp4" type="video/mp4">
+      <source src="dawgg1.mp4" type="video/mp4">
+      <source src="jeezer.mp4" type="video/mp4">
     </video>
 
     <button id="playButton" onclick="playVideo()">𝗖𝗟𝗜𝗖𝗞 𝗢𝗡 𝗠𝗘, 𝗙𝗘𝗟𝗟𝗔 🗣 ️‍🔥</button>
@@ -59,6 +60,12 @@
       function playVideo() {
         var soundEffect = document.getElementById('soundEffect');
         soundEffect.play();
+
+        var videos = document.getElementById('myVideo').getElementsByTagName('source');
+        var randomIndex = Math.floor(Math.random() * videos.length);
+        var randomSource = videos[randomIndex].src;
+
+        document.getElementById('myVideo').src = randomSource;
 
         var video = document.getElementById('myVideo');
 
