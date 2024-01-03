@@ -15,7 +15,16 @@
         background-color: #000;
       }
 
-      #myVideo {
+      .video-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -39,52 +48,18 @@
         background-color: rgba(0, 0, 0, 0.0);
       }
 
-      #myVideo.loaded {
+      .loaded {
         opacity: 1;
       }
     </style>
   </head>
   <body>
-    <video id="myVideo">
-      <source src="history.mp4" type="video/mp4">
-    </video>
+    <div class="video-container">
+      <video id="backgroundVideo" class="video">
+        <source src="Old TV static.mp4" type="video/mp4">
+      </video>
+    </div>
 
-    <button id="playButton" onclick="playVideo()">𝔎𝔩𝔦𝔠𝔨 𝔪𝔦𝔠𝔥 𝔞𝔫, 𝔎𝔞𝔪𝔢𝔯𝔞𝔡!</button>
-
-    <audio id="soundEffect">
-      <source src="65a5cf536cd85d6b5b22a10bdd20b39300373dd5.ogg" type="audio/ogg">
-    </audio>
-
-    <script>
-      function playVideo() {
-        var soundEffect = document.getElementById('soundEffect');
-        soundEffect.play();
-
-        var videos = document.getElementById('myVideo').getElementsByTagName('source');
-        var randomIndex = Math.floor(Math.random() * videos.length);
-        var randomSource = videos[randomIndex].src;
-
-        document.getElementById('myVideo').src = randomSource;
-
-        var video = document.getElementById('myVideo');
-
-        document.getElementById('playButton').style.display = 'none';
-
-        video.play();
-
-        video.classList.add('loaded');
-
-        video.addEventListener('ended', function() {
-          video.pause();
-
-          video.classList.remove('loaded');
-
-          document.getElementById('playButton').style.display = 'block';
-        });
-      }
-
-      document.getElementById('myVideo').addEventListener('canplaythrough', function() {
-      });
-    </script>
-  </body>
-</html>
+    <div class="video-container">
+      <video id="myVideo" class="video">
+        <source src="history.mp4" typ
