@@ -26,6 +26,9 @@
             height: 100%;
             background-color: #000;
             z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             animation: fadeOut 1s ease-in-out forwards;
         }
 
@@ -39,14 +42,12 @@
             }
         }
 
-        .intro-text {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            opacity: 0;
+        .typewriter {
             white-space: nowrap;
             overflow: hidden;
             border-right: 2px solid #00ff00; /* Typewriter cursor */
+            margin-left: 20px;
+            font-size: 1.5em;
             animation: typeWriter 4s steps(40) 1s 1 normal both, fadeIn 1s ease-in-out forwards;
         }
 
@@ -66,6 +67,13 @@
             100% {
                 opacity: 1;
             }
+        }
+
+        .continue-text {
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            animation-delay: 5s; /* Delay for "click on me to continue..." */
         }
 
         .logo img {
@@ -112,10 +120,9 @@
 </head>
 <body>
 
-    <div class="overlay"></div>
-
-    <div class="intro-text">
-        Hello, <span id="visitorIp"></span>.
+    <div class="overlay">
+        <div class="typewriter" id="typewriter"></div>
+        <div class="continue-text" onclick="continueToHome()">Click on me to continue...</div>
     </div>
 
     <div class="logo">
@@ -148,12 +155,19 @@
         fetch('https://api64.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
-                document.getElementById('visitorIp').innerText = data.ip;
+                var typewriter = document.getElementById('typewriter');
+                typewriter.innerText = `Hello, ${data.ip}.\n`;
+                typewriter.innerHTML += '<div class="continue-text" onclick="continueToHome()">Click on me to continue...</div>';
             });
 
         // Function to play the video and hide the overlay
         function playVideo() {
             document.getElementById('backgroundVideo').play();
+            document.querySelector('.overlay').style.display = 'none';
+        }
+
+        // Function to continue to the home screen when clicked
+        function continueToHome() {
             document.querySelector('.overlay').style.display = 'none';
         }
     </script>
