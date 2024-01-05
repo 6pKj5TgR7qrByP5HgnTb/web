@@ -25,8 +25,9 @@
             width: 100%;
             height: 100%;
             background-color: #000;
-            z-index: 9999;
+            z-index: 1000; /* Adjusted z-index value */
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             animation: fadeOut 1s ease-in-out forwards;
@@ -85,6 +86,7 @@
             transform: translateX(-100%);
             animation: fadeInFromLeft 1s ease-in-out forwards;
             animation-delay: 1s; /* Delay for logo after the overlay fades out */
+            z-index: 1001; /* Adjusted z-index value */
         }
 
         @keyframes fadeInFromLeft {
@@ -105,6 +107,7 @@
             transform: translateX(-100%);
             animation: fadeInFromLeft 1s ease-in-out forwards;
             animation-delay: 1.5s; /* Delay for social icons after the logo */
+            z-index: 1001; /* Adjusted z-index value */
         }
 
         /* Additional styles for social icons and hover effect */
@@ -115,6 +118,22 @@
 
         .social-icons a:hover {
             transform: scale(1.1);
+        }
+
+        #playButton {
+            position: absolute;
+            bottom: 20px;
+            z-index: 1001; /* Adjusted z-index value */
+        }
+
+        #backgroundVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1000; /* Adjusted z-index value */
         }
     </style>
 </head>
