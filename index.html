@@ -14,6 +14,8 @@
             margin: 0;
             background-color: #000;
             overflow: hidden;
+            color: #00ff00; /* Green text color */
+            font-family: monospace;
         }
 
         .overlay {
@@ -34,6 +36,35 @@
             100% {
                 opacity: 0;
                 display: none;
+            }
+        }
+
+        .intro-text {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            opacity: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #00ff00; /* Typewriter cursor */
+            animation: typeWriter 4s steps(40) 1s 1 normal both, fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes typeWriter {
+            from, to {
+                width: 0;
+            }
+            50% {
+                border-right: none;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
             }
         }
 
@@ -83,13 +114,17 @@
 
     <div class="overlay"></div>
 
+    <div class="intro-text">
+        Hello, <span id="visitorIp"></span>.
+    </div>
+
     <div class="logo">
-        <img src="0b9.png" alt="0B9">
+        <img src="your_logo.png" alt="Your Logo">
     </div>
 
     <div class="social-icons">
-        <a href="https://www.roblox.com/users/1543028131" target="_blank">
-            <img src="rblx.png" alt="Roblox">
+        <a href="YOUR_FACEBOOK_URL" target="_blank">
+            <img src="facebook_logo.png" alt="Facebook">
         </a>
 
         <a href="YOUR_TWITTER_URL" target="_blank">
@@ -101,5 +136,26 @@
         </a>
     </div>
 
+    <button id="playButton" onclick="playVideo()">Play Video</button>
+    
+    <video id="backgroundVideo" loop muted>
+        <source src="your_music_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        // Get and display the visitor's IP address
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visitorIp').innerText = data.ip;
+            });
+
+        // Function to play the video and hide the overlay
+        function playVideo() {
+            document.getElementById('backgroundVideo').play();
+            document.querySelector('.overlay').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
