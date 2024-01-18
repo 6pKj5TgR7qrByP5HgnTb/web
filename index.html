@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
             margin: 0;
             background-color: #000;
             overflow: hidden;
-            color: #00ff00; /* Green text color */
+            color: #00ff00;
             font-family: monospace;
         }
 
@@ -25,11 +26,12 @@
             width: 100%;
             height: 100%;
             background-color: #000;
-            z-index: 1000; /* Adjusted z-index value */
+            z-index: 1000;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            opacity: 1;
             animation: fadeOut 1s ease-in-out forwards;
         }
 
@@ -46,16 +48,18 @@
         .typewriter {
             white-space: nowrap;
             overflow: hidden;
-            border-right: 2px solid #00ff00; /* Typewriter cursor */
+            border-right: 2px solid #00ff00;
             margin-left: 20px;
             font-size: 1.5em;
             animation: typeWriter 4s steps(40) 1s 1 normal both, fadeIn 1s ease-in-out forwards;
         }
 
         @keyframes typeWriter {
-            from, to {
+            from,
+            to {
                 width: 0;
             }
+
             50% {
                 border-right: none;
             }
@@ -74,19 +78,19 @@
             cursor: pointer;
             opacity: 0;
             animation: fadeIn 1s ease-in-out forwards;
-            animation-delay: 5s; /* Delay for "click on me to continue..." */
+            animation-delay: 5s;
         }
 
         .logo img {
             max-width: 100%;
             height: auto;
             display: block;
-            margin-bottom: 20px; /* Adjust margin as needed */
+            margin-bottom: 20px;
             opacity: 0;
             transform: translateX(-100%);
             animation: fadeInFromLeft 1s ease-in-out forwards;
-            animation-delay: 1s; /* Delay for logo after the overlay fades out */
-            z-index: 1001; /* Adjusted z-index value */
+            animation-delay: 1s;
+            z-index: 1001;
         }
 
         @keyframes fadeInFromLeft {
@@ -106,11 +110,10 @@
             opacity: 0;
             transform: translateX(-100%);
             animation: fadeInFromLeft 1s ease-in-out forwards;
-            animation-delay: 1.5s; /* Delay for social icons after the logo */
-            z-index: 1001; /* Adjusted z-index value */
+            animation-delay: 1.5s;
+            z-index: 1001;
         }
 
-        /* Additional styles for social icons and hover effect */
         .social-icons a {
             display: inline-block;
             transition: transform 0.2s;
@@ -123,7 +126,7 @@
         #playButton {
             position: absolute;
             bottom: 20px;
-            z-index: 1001; /* Adjusted z-index value */
+            z-index: 1001;
         }
 
         #backgroundVideo {
@@ -133,10 +136,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 1000; /* Adjusted z-index value */
+            z-index: 1000;
         }
     </style>
 </head>
+
 <body>
 
     <div class="overlay">
@@ -163,32 +167,31 @@
     </div>
 
     <button id="playButton" onclick="playVideo()">Play Video</button>
-    
+
     <video id="backgroundVideo" loop>
         <source src="therapy.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <script>
-        // Get and display the visitor's IP address
-        fetch('https://api64.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                var typewriter = document.getElementById('typewriter');
-                typewriter.innerText = `Hello, ${data.ip}.\n`;
-                typewriter.innerHTML += '<div class="continue-text" onclick="continueToHome()">Click on me to continue...</div>';
-            });
-
-        // Function to play the video and hide the overlay
         function playVideo() {
             document.getElementById('backgroundVideo').play();
             document.querySelector('.overlay').style.display = 'none';
         }
 
-        // Function to continue to the home screen when clicked
         function continueToHome() {
-            document.querySelector('.overlay').style.display = 'none';
+            document.querySelector('.overlay').style.opacity = '0';
+            document.querySelector('.overlay').style.pointerEvents = 'none';
         }
+
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                var typewriter = document.getElementById('typewriter');
+                typewriter.innerHTML = `Hello, ${data.ip}.<br>How's ${data.location.country} ?`;
+                typewriter.innerHTML += '<div class="continue-text" onclick="continueToHome()">Click on me to continue...</div>';
+            });
     </script>
 </body>
+
 </html>
