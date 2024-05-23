@@ -39,7 +39,8 @@
             overflow: hidden;
             border-right: 2px solid #00ff00;
             margin-left: 20px;
-            font-size: 1.5em;
+            font-size: 1.2em;
+            text-align: center;
             animation: typeWriter 4s steps(40) 1s 1 normal both, fadeIn 1s ease-in-out forwards;
         }
 
@@ -79,6 +80,15 @@
             z-index: 1000;
         }
 
+        .center-logo {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1001;
+        }
+
         .social-icons {
             display: none;
             flex-direction: row;
@@ -103,7 +113,6 @@
 
     <div class="black-screen" id="blackScreen" onclick="showVideoScreen()">
         <div class="typewriter" id="typewriter"></div>
-        <div class="clickable-text" onclick="showVideoScreen()">Click on me to continue...</div>
     </div>
 
     <video class="video-screen" id="backgroundVideo" loop>
@@ -111,9 +120,11 @@
         Your browser does not support the video tag.
     </video>
 
+    <img src="0b9.png" alt="Logo" class="center-logo" id="centerLogo">
+
     <div class="social-icons" id="socialIcons">
         <a href="https://www.roblox.com/users/1543028131" target="_blank">
-            <img src="0b9.png" alt="Roblox">
+            <img src="rblx.png" alt="Roblox">
         </a>
         <!-- Add other social media icons here -->
     </div>
@@ -122,6 +133,7 @@
         function showVideoScreen() {
             var blackScreen = document.getElementById('blackScreen');
             var videoScreen = document.getElementById('backgroundVideo');
+            var centerLogo = document.getElementById('centerLogo');
             var socialIcons = document.getElementById('socialIcons');
 
             blackScreen.style.opacity = '0';
@@ -131,6 +143,7 @@
                 blackScreen.style.display = 'none';
                 videoScreen.style.display = 'block';
                 videoScreen.play();
+                centerLogo.style.display = 'block';
                 socialIcons.style.display = 'flex';
             }, 1000); // Adjust the delay as needed
         }
@@ -140,7 +153,7 @@
             .then(data => {
                 var typewriter = document.getElementById('typewriter');
                 typewriter.innerHTML = `Hello, ${data.ip}.<br>How's ${data.location ? data.location.country : 'your country'}?`;
-                typewriter.innerHTML += '<br><div class="clickable-text" onclick="showVideoScreen()">Click on me to continue...</div>';
+                typewriter.innerHTML += '<br><span class="clickable-text" onclick="showVideoScreen()">Click on me to continue...</span>';
             });
     </script>
 </body>
